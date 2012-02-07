@@ -1,0 +1,24 @@
+Disclaimer
+==========
+
+This is all rather crude at the moment, the scenarios have not really
+been thought through.
+
+Viewing
+=======
+
+You need branch bug24527 of the Java client.
+
+Ensure you have a working rabbitmq-server dir that is a peer to
+rabbitmq-java-client. Do not start rabbitmq-server. Run:
+
+$ sh ./build/dist/runjava.sh com.rabbitmq.examples.perf.PerformanceMain
+
+wait patiently, and copy the results.js file that it spits out into
+this directory.
+
+Chrome users may need to view the page via a web server, not file://.
+
+$ python -m SimpleHTTPServer
+
+will do in a pinch.

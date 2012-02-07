@@ -1,0 +1,22 @@
+.chart-style {
+    width: 600px;
+    height: 300px;
+}
+
+.time-summary {
+overflow: auto; width: 100%;
+}
+
+.time-summary div {
+    float: left;
+    text-align: center;
+    padding: 1em;
+}
+
+.time-summary div span {
+    display: block;
+}
+
+.time-summary div .v {
+    font-size: 200%;
+}
