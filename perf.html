@@ -15,6 +15,7 @@
     <p>Simple 1 -> 1 autoack:</p>
     <div class="chart"
          type="time"
+         latency="true"
          scenario="no-ack"></div>
 
     <p>n -> 0 sending rate vs number of producers, for various message sizes:</p>
@@ -35,5 +36,16 @@
     <div class="chart"
          type="r-l"
          scenario="rate-vs-latency"></div>
+
+    <p>Queue load / drain 500k:</p>
+    <div class="chart"
+         type="time"
+         scenario="fill-drain-small-queue"></div>
+
+    <p>Queue load / drain 1M:</p>
+    <div class="chart"
+         type="time"
+         scenario="fill-drain-large-queue"></div>
+
  </body>
 </html>

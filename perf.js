@@ -39,27 +39,15 @@ function plot(div) {
 }
 
 function plot_time(div, data) {
-    function wrap(n, v) {
-        return '<div><span class="n">' + n + '</span><span class="v">' + v +
-            '</span></div>';
-    }
-
-    div.after('<div class="time-summary">' +
-              wrap('Avg send-rate', Math.round(data['send-rate']) + ' msg/s') +
-              wrap('Avg latency', Math.round(data['avg-latency']) + ' us') +
-              '</div>');
-    plot_time0(div, data);
-}
-
-function plot_time0(div, data) {
+    var show_latency = div.attr('latency') == 'true';
     var chart_data = [];
-    $.each(['send-rate', 'recv-rate',
-            'min-latency', 'avg-latency', 'max-latency'],
-           function(i, plot_key) {
+    var keys = show_latency
+       ? ['send-rate', 'recv-rate', 'min-latency', 'avg-latency', 'max-latency']
+        : ['send-rate', 'recv-rate'];
+    $.each(keys, function(i, plot_key) {
         var d = [];
-        var secs = 0;
         $.each(data['samples'], function(j, sample) {
-            d.push([++secs, sample[plot_key]]);
+            d.push([sample['elapsed'] / 1000, sample[plot_key]]);
         });
         var yaxis = (plot_key.indexOf('latency') == -1 ? 1 : 2);
         chart_data.push({label: plot_key, data: d, yaxis: yaxis});
@@ -125,7 +113,6 @@ function plot_data(div, chart_data, extra) {
         }
     }
 
-    div.addClass('chart-style');
     $.plot(div, chart_data, chrome);
 }
 
