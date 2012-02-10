@@ -1,4 +1,4 @@
-var results;
+var main_results;
 
 // TODO
 var plot_key = 'send-rate';
@@ -7,16 +7,44 @@ $(document).ready(function() {
     $.ajax({
         url: 'results.js',
         success: function(data) {
-            results = JSON.parse(data);
-            $('.chart').map(function() {
+            main_results = JSON.parse(data);
+            $('.chart, .small-chart').map(function() {
                 plot($(this));
+            });
+            $('.summary').map(function() {
+                summarise($(this));
             });
         },
         fail: function() { alert('error loading results.js'); }
     });
 });
 
+function summarise(div) {
+    var scenario = div.attr('scenario');
+    var data     = main_results[scenario];
+
+    var rate = Math.round((data['send-rate'] + data['recv-rate']) / 2);
+    div.append('<strong>' + rate + '</strong>msg/s');
+}
+
 function plot(div) {
+    var file = div.attr('file');
+
+    if (file == undefined) {
+        plot0(div, main_results);
+    }
+    else {
+        $.ajax({
+            url: file,
+            success: function(data) {
+                plot0(div, JSON.parse(data));
+            },
+            fail: function() { alert('error loading ' + file); }
+        });
+    }
+}
+
+function plot0(div, results) {
     var type     = div.attr('type');
     var scenario = div.attr('scenario');
 
@@ -104,8 +132,13 @@ function plot_data(div, chart_data, extra) {
         },
         grid: {
             backgroundColor: { colors: ["#fff", "#eee"] }
-        }
+        },
+        legend: { position: 'se', backgroundOpacity: 0.5 }
     };
+
+    if (div.attr('class') == 'small-chart') {
+        chrome['legend'] = { show: false };
+    }
 
     if (extra != undefined) {
         for (var k in extra) {

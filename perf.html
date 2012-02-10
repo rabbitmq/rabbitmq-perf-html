@@ -12,7 +12,17 @@
     <body>
     <h1>RabbitMQ Performance</h1>
 
-    <p>Simple 1 -> 1 autoack:</p>
+    <h2>Simple 1 -> 1 autoack (2.7.1)</h2>
+    <div class="chart"
+         type="time"
+         latency="true"
+         x-axis="time (s)"
+         y-axis="rate (msg/s)"
+         y-axis2="latency (μs)"
+         file="results-mini-2.7.1.js"
+         scenario="no-ack"></div>
+
+    <h2>Simple 1 -> 1 autoack (2.8.0)</h2>
     <div class="chart"
          type="time"
          latency="true"
@@ -21,7 +31,48 @@
          y-axis2="latency (μs)"
          scenario="no-ack"></div>
 
-    <p>n -> 0 sending rate vs number of producers, for various message sizes:</p>
+    <h2>Some scenarios</h2>
+    <div class="summary-explanation">
+      One publisher, one consumer, no acknowledgements.
+    </div>
+    <div class="summary" scenario="no-ack">auto-ack</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="no-ack"></div>
+
+    <div class="summary-explanation">
+      As above, but with acknowledgements.
+    </div>
+    <div class="summary" scenario="ack">ack</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="ack"></div>
+
+    <div class="summary-explanation">
+      As above, but with confirmations.
+    </div>
+    <div class="summary" scenario="ack-confirm">ack-confirm</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="ack-confirm"></div>
+
+    <div class="summary-explanation">
+      As above, but with persistence.
+    </div>
+    <div class="summary" scenario="ack-confirm-persist">a-c-persist</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="ack-confirm-persist"></div>
+
+    <h2>n -> 0 sending rate vs number of producers, for various message sizes</h2>
     <div class="chart"
          type="series"
          scenario="message-sizes-and-producers"
@@ -30,7 +81,7 @@
          y-axis="rate (msg/s)"
          series-key="minMsgSize"></div>
 
-    <p>1 -> 1 sending rate vs message sizes with various broker configs:</p>
+    <h2>1 -> 1 sending rate vs message sizes with various broker configs</h2>
     <div class="chart"
          type="series"
          scenario="message-sizes-and-broker-config"
@@ -39,21 +90,21 @@
          y-axis="rate (msg/s)"
          series-key="broker_type"></div>
 
-    <p>1 -> 1 sending rate attempted vs latency:</p>
+    <h2>1 -> 1 sending rate attempted vs latency</h2>
     <div class="chart"
          type="r-l"
          x-axis="rate attempted (msg/s)"
          y-axis="rate (msg/s)"
          scenario="rate-vs-latency"></div>
 
-    <p>Queue load / drain 500k:</p>
+    <h2>Queue load / drain 500k</h2>
     <div class="chart"
          type="time"
          x-axis="time (s)"
          y-axis="rate (msg/s)"
          scenario="fill-drain-small-queue"></div>
 
-    <p>Queue load / drain 1M:</p>
+    <h2>Queue load / drain 1M</h2>
     <div class="chart"
          type="time"
          x-axis="time (s)"
