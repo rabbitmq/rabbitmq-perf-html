@@ -42,7 +42,7 @@ function plot_time(div, data) {
     var show_latency = div.attr('latency') == 'true';
     var chart_data = [];
     var keys = show_latency
-       ? ['send-rate', 'recv-rate', 'min-latency', 'avg-latency', 'max-latency']
+       ? ['send-rate', 'recv-rate', 'avg-latency']
         : ['send-rate', 'recv-rate'];
     $.each(keys, function(i, plot_key) {
         var d = [];
