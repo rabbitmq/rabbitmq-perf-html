@@ -113,6 +113,17 @@ function plot_data(div, chart_data, extra) {
         }
     }
 
+    var cell = div.wrap('<td class="foo"/>').parent();;
+    var row = cell.wrap('<tr/>').parent();
+    row.wrap('<table class="test"/>');
+
+    cell.before('<td class="yaxis">' + div.attr('y-axis') + '</td>');
+    if (div.attr('y-axis2')) {
+        cell.after('<td class="yaxis">' + div.attr('y-axis2') + '</td>');
+    }
+    row.after('<tr><td></td><td class="xaxis">' + div.attr('x-axis') +
+              '</td><td></td></tr>');
+
     $.plot(div, chart_data, chrome);
 }
 

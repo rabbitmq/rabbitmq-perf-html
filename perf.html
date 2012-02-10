@@ -16,6 +16,9 @@
     <div class="chart"
          type="time"
          latency="true"
+         x-axis="time (s)"
+         y-axis="rate (msg/s)"
+         y-axis2="latency (μs)"
          scenario="no-ack"></div>
 
     <p>n -> 0 sending rate vs number of producers, for various message sizes:</p>
@@ -23,6 +26,8 @@
          type="series"
          scenario="message-sizes-and-producers"
          x-key="producerCount"
+         x-axis="producers"
+         y-axis="rate (msg/s)"
          series-key="minMsgSize"></div>
 
     <p>1 -> 1 sending rate vs message sizes with various broker configs:</p>
@@ -30,21 +35,29 @@
          type="series"
          scenario="message-sizes-and-broker-config"
          x-key="minMsgSize"
+         x-axis="message size (bytes)"
+         y-axis="rate (msg/s)"
          series-key="broker_type"></div>
 
     <p>1 -> 1 sending rate attempted vs latency:</p>
     <div class="chart"
          type="r-l"
+         x-axis="rate attempted (msg/s)"
+         y-axis="rate (msg/s)"
          scenario="rate-vs-latency"></div>
 
     <p>Queue load / drain 500k:</p>
     <div class="chart"
          type="time"
+         x-axis="time (s)"
+         y-axis="rate (msg/s)"
          scenario="fill-drain-small-queue"></div>
 
     <p>Queue load / drain 1M:</p>
     <div class="chart"
          type="time"
+         x-axis="time (s)"
+         y-axis="rate (msg/s)"
          scenario="fill-drain-large-queue"></div>
 
  </body>
