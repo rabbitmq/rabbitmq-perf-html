@@ -43,7 +43,27 @@
          scenario="no-ack"></div>
 
     <div class="summary-explanation">
-      As above, but with acknowledgements.
+      One publisher, one consumer, no acknowledgements, publish mandatory.
+    </div>
+    <div class="summary" scenario="no-ack-mandatory">mandatory</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="no-ack-mandatory"></div>
+
+    <div class="summary-explanation">
+      One publisher, one consumer, no acknowledgements, publish immediate.
+    </div>
+    <div class="summary" scenario="no-ack-immediate">immediate</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="no-ack-immediate"></div>
+
+    <div class="summary-explanation">
+      One publisher, one consumer, acknowledgements.
     </div>
     <div class="summary" scenario="ack">ack</div>
     <div class="small-chart"
@@ -72,6 +92,15 @@
          y-axis=""
          scenario="ack-confirm-persist"></div>
 
+    <h2>1 -> 1 sending rate message sizes</h2>
+    <div class="chart"
+         type="x-y"
+         scenario="message-sizes"
+         x-key="minMsgSize"
+         x-axis="message size (bytes)"
+         y-axis="rate (msg/s)"
+         legend="ne"></div>
+
     <h2>n -> 0 sending rate vs number of producers, for various message sizes</h2>
     <div class="chart"
          type="series"
@@ -90,6 +119,17 @@
          y-axis="rate (msg/s)"
          legend="ne"
          series-key="broker_type"></div>
+
+    <h2>1 -> n recving rate vs consumer count / prefetch count</h2>
+    <div class="chart"
+         type="series"
+         scenario="consumers"
+         x-key="consumerCount"
+         x-axis="number of consumers"
+         y-axis="rate (msg/s)"
+         legend="ne"
+         plot-key="recv-rate"
+         series-key="prefetchCount"></div>
 
     <h2>1 -> 1 sending rate attempted vs latency</h2>
     <div class="chart"

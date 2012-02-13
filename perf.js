@@ -1,8 +1,5 @@
 var main_results;
 
-// TODO
-var plot_key = 'send-rate';
-
 $(document).ready(function() {
     $.ajax({
         url: 'results.js',
@@ -60,6 +57,9 @@ function plot0(div, results) {
         if (type == 'series') {
             plot_series(div, dimensions, dimension_values, data);
         }
+        else if (type == 'x-y') {
+            plot_x_y(div, dimensions, dimension_values, data);
+        }
         else if (type == 'r-l') {
             plot_r_l(div, dimensions, dimension_values, data);
         }
@@ -90,6 +90,7 @@ function plot_series(div, dimensions, dimension_values, data) {
     var series_first  = dimensions[0] == series_key;
     var series_values = dimension_values[series_key];
     var x_values      = dimension_values[x_key];
+    var plot_key      = attr_or_default(div, 'plot-key', 'send-rate');
 
     var chart_data = [];
     $.each(series_values, function(i, s_val) {
@@ -101,6 +102,20 @@ function plot_series(div, dimensions, dimension_values, data) {
         });
         chart_data.push({label: series_key + ' = ' + s_val, data: d});
     });
+
+    plot_data(div, chart_data);
+}
+
+function plot_x_y(div, dimensions, dimension_values, data) {
+    var x_key = div.attr('x-key');
+    var x_values = dimension_values[x_key];
+
+    var chart_data = [];
+    var d = [];
+    $.each(x_values, function(i, x_val) {
+        d.push([x_val, data[x_val]['send-rate']]);
+    });
+    chart_data.push({label: 'send-rate', data: d});
 
     plot_data(div, chart_data);
 }
@@ -125,8 +140,7 @@ function plot_r_l(div, dimensions, dimension_values, data) {
 }
 
 function plot_data(div, chart_data, extra) {
-    var legend = div.attr('legend');
-    legend = legend == undefined ? 'se' : legend;
+    var legend = attr_or_default(div, 'legend', 'se');
 
     var chrome = {
         series: {
@@ -175,6 +189,11 @@ function log_ticks(axis) {
         res.push(val);
     }
     return res;
+}
+
+function attr_or_default(div, key, def) {
+    var res = div.attr(key);
+    return res == undefined ? def : res;
 }
 
 var axes_rate_and_latency = [{min:       0},
