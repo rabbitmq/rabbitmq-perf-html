@@ -125,6 +125,9 @@ function plot_r_l(div, dimensions, dimension_values, data) {
 }
 
 function plot_data(div, chart_data, extra) {
+    var legend = div.attr('legend');
+    legend = legend == undefined ? 'se' : legend;
+
     var chrome = {
         series: {
             lines: { show: true },
@@ -133,7 +136,7 @@ function plot_data(div, chart_data, extra) {
         grid: {
             backgroundColor: { colors: ["#fff", "#eee"] }
         },
-        legend: { position: 'se', backgroundOpacity: 0.5 }
+        legend: { position: legend, backgroundOpacity: 0.5 }
     };
 
     if (div.attr('class') == 'small-chart') {
