@@ -214,13 +214,17 @@
       different ways of using messaging affect performance!
     </p>
 
+    <hr/>
+    <p>
+      Welcome back! Last time we talked about flow control and
+      latency; today let's talk about how different features affect
+      the performance we see. Here are some simple scenarios. As
+      before, they're all variations on the theme of one publisher and
+      one consumer publishing as fast as they can.
+    </p>
 
 
-
-    <h3>Some scenarios</h3>
-    <div class="summary-explanation">
-      One publisher, one consumer, no acknowledgements.
-    </div>
+    <h2>Six Simple Scenarios</h2>
     <div class="summary" scenario="no-ack">auto-ack</div>
     <div class="small-chart"
          type="time"
@@ -228,9 +232,11 @@
          y-axis=""
          scenario="no-ack"></div>
 
-    <div class="summary-explanation">
-      One publisher, one consumer, no acknowledgements, publish mandatory.
-    </div>
+    <p>
+      This first scenario is the simplest - just plain straightforward
+      publishing and consuming. So we have a baseline.
+    </p>
+
     <div class="summary" scenario="no-ack-mandatory">mandatory</div>
     <div class="small-chart"
          type="time"
@@ -238,9 +244,19 @@
          y-axis=""
          scenario="no-ack-mandatory"></div>
 
-    <div class="summary-explanation">
-      One publisher, one consumer, no acknowledgements, publish immediate.
-    </div>
+    <p>
+      Now let's try publishing with the mandatory flag set. We drop to
+      about 40% of the previous rate. The reason for this is that the
+      channel we're publishing to can't just asynchronously stream
+      messages at queues any more; it synchronously checks with the
+      queues to make sure they're still there.
+    </p>
+
+    <p>
+      (Yes, we could probably make mandatory publishing faster, but
+      it's not very heavily used.)
+    </p>
+
     <div class="summary" scenario="no-ack-immediate">immediate</div>
     <div class="small-chart"
          type="time"
@@ -248,9 +264,12 @@
          y-axis=""
          scenario="no-ack-immediate"></div>
 
-    <div class="summary-explanation">
-      One publisher, one consumer, acknowledgements.
-    </div>
+    <p>
+      The immediate flag gives us almost exactly the same drop in
+      performance. This isn't hugely surprising - it has to make the
+      same synchronous check with the queue.
+    </p>
+
     <div class="summary" scenario="ack">ack</div>
     <div class="small-chart"
          type="time"
@@ -258,25 +277,56 @@
          y-axis=""
          scenario="ack"></div>
 
-    <div class="summary-explanation">
-      As above, but with confirmations.
-    </div>
+    <p>
+      Scrapping the rarely-used mandatory and immediate flags, let's
+      try turning on acknowledgements for delivered messages. We still
+      see a performance drop compared to delivering without
+      acknowledgements (the server has to do more bookkeeping after
+      all) but it's less noticeable.
+    </p>
+
     <div class="summary" scenario="ack-confirm">ack-confirm</div>
     <div class="small-chart"
          type="time"
          x-axis="time (s)"
          y-axis=""
          scenario="ack-confirm"></div>
+    <p>
+      Now we turn on publish confirms as well. Performance drops a
+      little more but we're still at over 60% the speed of neither
+      acks nor confirms.
+    </p>
 
-    <div class="summary-explanation">
-      As above, but with persistence.
-    </div>
     <div class="summary" scenario="ack-confirm-persist">a-c-persist</div>
     <div class="small-chart"
          type="time"
          x-axis="time (s)"
          y-axis=""
          scenario="ack-confirm-persist"></div>
+
+    <p>
+      Finally, we enable message persistence. The rate becomes much
+      lower, since we're throwing all those messages at the disk as
+      well.
+    </p>
+
+    <h2>Message Sizes</h2>
+
+    <p>
+      Notably, all the messages we've been sending until now have only
+      been a few bytes long. There are a couple of reasons for this:
+    </p>
+
+    <ul>
+      <li>Quite a lot of the work done by RabbitMQ is per-message, not
+      per-byte-of-message.</li>
+      <li>It's always nice to look at big numbers.</li>
+    </ul>
+
+    <p>
+      But in the real world we will often want to send bigger
+      messages. So let's look at the next chart:
+    </p>
 
     <h3>1 -> 1 sending rate message sizes</h3>
     <div class="chart"
@@ -286,6 +336,17 @@
          x-axis="message size (bytes)"
          y-axis="rate (msg/s)"
          legend="ne"></div>
+
+    <p>
+      Here (again) we're sending unacked / unconfirmed messages as
+      fast as possible, but this time we vary the message size. Note
+      how the message rate drops off rapidly then plateaus. TODO: why
+      on earth is this?
+    </p>
+
+    <p>
+      TODO: another chart, much bigger messages.
+    </p>
 
     <h3>n -> 0 sending rate vs number of producers, for various message sizes</h3>
     <div class="chart"
