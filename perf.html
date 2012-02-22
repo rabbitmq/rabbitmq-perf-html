@@ -160,7 +160,7 @@
       takes a while for a message to get from the beginning to the
       end. That accounts for some of the latency. However, most of it
       comes from an invisible "mailbox" in front of the entire server
-      - the TCP buffers provided byt the operating system. On Linux
+      - the TCP buffers provided by the operating system. On Linux
       the OS will allow up to 8MB of messages to back up in the TCP
       stack. 8MB doesn't sound like a lot of course, but we're dealing
       with tiny messages (and each one needs routing decisions,
@@ -189,8 +189,8 @@
     <p>
       In the charts above we were running as fast as we can, but here
       we limit the rate at varying points near the maximum rate we can
-      acheive. So the yellow line shows rate attempted vs rate
-      acheived - see that it starts off purely linear (when we have
+      achieve. So the yellow line shows rate attempted vs rate
+      achieved - see that it starts off purely linear (when we have
       spare capacity and so if we try to publish faster we will
       succeed) and then stops growing as we reach the limit of what we
       can do.
