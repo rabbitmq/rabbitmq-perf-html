@@ -18,9 +18,20 @@ $(document).ready(function() {
 
 function summarise(div) {
     var scenario = div.attr('scenario');
+    var mode     = div.attr('mode');
     var data     = main_results[scenario];
 
-    var rate = Math.round((data['send-rate'] + data['recv-rate']) / 2);
+    var rate;
+    if (mode == 'send') {
+        rate = Math.round(data['send-rate']);
+    }
+    else if (mode == 'recv') {
+        rate = Math.round(data['recv-rate']);
+    }
+    else {
+        rate = Math.round((data['send-rate'] + data['recv-rate']) / 2);
+    }
+
     div.append('<strong>' + rate + '</strong>msg/s');
 }
 

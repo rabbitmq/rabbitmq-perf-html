@@ -223,6 +223,28 @@
       one consumer publishing as fast as they can.
     </p>
 
+    <div class="summary" scenario="headline-publish" mode="send">headline publish</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="headline-publish"></div>
+
+    <div class="summary" scenario="headline-consume" mode="recv">headline consume</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="headline-consume"></div>
+
+    <div class="summary" scenario="no-consume">no-consume</div>
+    <div class="small-chart"
+         type="time"
+         x-axis="time (s)"
+         y-axis=""
+         scenario="no-consume"></div>
+
+    <p>TODO explain these</p>
 
     <h2>Six Simple Scenarios</h2>
     <div class="summary" scenario="no-ack">auto-ack</div>
@@ -328,10 +350,10 @@
       messages. So let's look at the next chart:
     </p>
 
-    <h3>1 -> 1 sending rate message sizes</h3>
+    <h3>1 -> 1 sending rate message sizes (small)</h3>
     <div class="chart"
          type="x-y"
-         scenario="message-sizes"
+         scenario="message-sizes-small"
          x-key="minMsgSize"
          x-axis="message size (bytes)"
          y-axis="rate (msg/s)"
@@ -343,6 +365,15 @@
       how the message rate drops off rapidly then plateaus. TODO: why
       on earth is this?
     </p>
+
+    <h3>1 -> 1 sending rate message sizes (large)</h3>
+    <div class="chart"
+         type="x-y"
+         scenario="message-sizes-large"
+         x-key="minMsgSize"
+         x-axis="message size (bytes)"
+         y-axis="rate (msg/s)"
+         legend="ne"></div>
 
     <p>
       TODO: another chart, much bigger messages.
