@@ -188,22 +188,21 @@
 
     <p>
       In the charts above we were running as fast as we can, but here
-      we limit the rate at varying points near the maximum rate we can
-      achieve. So the yellow line shows rate attempted vs rate
-      achieved - see that it starts off purely linear (when we have
-      spare capacity and so if we try to publish faster we will
-      succeed) and then stops growing as we reach the limit of what we
-      can do.
+      we limit the rate at varying points up to the maximum rate we
+      can achieve. So the yellow line shows rate attempted vs rate
+      achieved - see that it goes most of the way purely 1:1 linearly
+      (when we have spare capacity and so if we try to publish faster
+      we will succeed) and then stops growing as we reach the limit of
+      what we can do.
     </p>
 
     <p>
-      But look at the latency! On the left we have latency of not much
-      more than a millisecond (and that's with the server running at
-      about 80% capacity, if we were publishing slower than that then
-      sub-millisecond is easily achievable). But towards the right as
-      we stop being able to publish any faster, we also hit a wall of
-      latency - the TCP buffers start to fill up and soon messages are
-      taking hundreds of milliseconds to get through them.
+      But look at the latency! With low publishing rates we have
+      latency of considerably less than a millisecond. But this drifts
+      up as the server gets busier. As we stop being able to publish
+      any faster, we hit a wall of latency - the TCP buffers start to
+      fill up and soon messages are taking hundreds of milliseconds to
+      get through them.
     </p>
 
     <p>
