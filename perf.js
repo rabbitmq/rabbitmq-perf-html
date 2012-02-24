@@ -155,13 +155,10 @@ function plot_data(div, chart_data, extra) {
     var cssClass = div.attr('class');
 
     var chrome = {
-        series: {
-            lines: { show: true },
-            points: { show: true }
-        },
-        grid: {
-            backgroundColor: { colors: ["#fff", "#eee"] }
-        },
+        series: { lines: { show: true } },
+        grid:   { borderWidth: 2, borderColor: "#aaa" },
+        xaxis:  { tickColor: "#fff" },
+        yaxis:  { tickColor: "#eee" },
         legend: { position: legend, backgroundOpacity: 0.5 }
     };
 
