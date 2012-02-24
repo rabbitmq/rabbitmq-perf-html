@@ -152,6 +152,7 @@ function plot_r_l(div, dimensions, dimension_values, data) {
 
 function plot_data(div, chart_data, extra) {
     var legend = attr_or_default(div, 'legend', 'se');
+    var cssClass = div.attr('class');
 
     var chrome = {
         series: {
@@ -174,9 +175,9 @@ function plot_data(div, chart_data, extra) {
         }
     }
 
-    var cell = div.wrap('<td class="foo"/>').parent();;
+    var cell = div.wrap('<td />').parent();;
     var row = cell.wrap('<tr/>').parent();
-    row.wrap('<table class="test"/>');
+    row.wrap('<table class="' + cssClass + '-wrapper"/>');
 
     cell.before('<td class="yaxis">' + div.attr('y-axis') + '</td>');
     if (div.attr('y-axis2')) {

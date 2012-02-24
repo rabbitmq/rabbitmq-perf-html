@@ -12,6 +12,10 @@ p, ul { font: 14px Verdana,sans-serif; }
     height: 100px;
 }
 
+.small-chart-wrapper {
+    float: left;
+}
+
 .xaxis, .yaxis {
     text-align: center;
     xcolor: #545454;
@@ -20,7 +24,7 @@ p, ul { font: 14px Verdana,sans-serif; }
 
 /* Any similarity is entirely intentional */
 
-.summary { min-width: 120px; font-size: 120%; text-align:center; padding:10px; background-color: #ddd; margin: 0 20px 0 0; color: #888; border-radius: 10px; -moz-border-radius: 10px; float: left; }
+.summary { min-width: 120px; font-size: 120%; text-align:center; padding:10px; background-color: #ddd; margin: 0 20px 0 0; color: #888; border-radius: 10px; -moz-border-radius: 10px; float: left; clear: both; }
 .summary strong { font-size: 2em; display: block; color: #444; font-weight: normal; }
 
 .summary {
@@ -29,8 +33,13 @@ p, ul { font: 14px Verdana,sans-serif; }
     border: 1px solid #e0e0e0;
 }
 
-.summary-explanation {
+.box {
+    overflow: auto;
+    width: 100%;
+}
+
+.box p {
+    margin: 0 0 0 20px;
     float: left;
-    width: 200px;
-    padding-right: 10px;
+    width: 600px;
 }
