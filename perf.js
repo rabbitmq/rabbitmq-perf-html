@@ -23,13 +23,13 @@ function summarise(div) {
 
     var rate;
     if (mode == 'send') {
-        rate = Math.round(data['send-rate']);
+        rate = Math.round(data['send-msg-rate']);
     }
     else if (mode == 'recv') {
-        rate = Math.round(data['recv-rate']);
+        rate = Math.round(data['recv-msg-rate']);
     }
     else {
-        rate = Math.round((data['send-rate'] + data['recv-rate']) / 2);
+        rate = Math.round((data['send-msg-rate'] + data['recv-msg-rate']) / 2);
     }
 
     div.append('<strong>' + rate + '</strong>msg/s');
@@ -81,8 +81,8 @@ function plot_time(div, data) {
     var show_latency = div.attr('latency') == 'true';
     var chart_data = [];
     var keys = show_latency
-       ? ['send-rate', 'recv-rate', 'avg-latency']
-        : ['send-rate', 'recv-rate'];
+       ? ['send-msg-rate', 'recv-msg-rate', 'avg-latency']
+        : ['send-msg-rate', 'recv-msg-rate'];
     $.each(keys, function(i, plot_key) {
         var d = [];
         $.each(data['samples'], function(j, sample) {
@@ -101,7 +101,7 @@ function plot_series(div, dimensions, dimension_values, data) {
     var series_first  = dimensions[0] == series_key;
     var series_values = dimension_values[series_key];
     var x_values      = dimension_values[x_key];
-    var plot_key      = attr_or_default(div, 'plot-key', 'send-rate');
+    var plot_key      = attr_or_default(div, 'plot-key', 'send-msg-rate');
 
     var chart_data = [];
     $.each(series_values, function(i, s_val) {
@@ -120,15 +120,22 @@ function plot_series(div, dimensions, dimension_values, data) {
 function plot_x_y(div, dimensions, dimension_values, data) {
     var x_key = div.attr('x-key');
     var x_values = dimension_values[x_key];
-
+    var plot_keys = attr_or_default(div, 'plot-keys', 'send-msg-rate').split(' ');
     var chart_data = [];
-    var d = [];
-    $.each(x_values, function(i, x_val) {
-        d.push([x_val, data[x_val]['send-rate']]);
+    var extra = {};
+    $.each(plot_keys, function(i, plot_key) {
+        var d = [];
+        $.each(x_values, function(j, x_val) {
+            d.push([x_val, data[x_val][plot_key]]);
+        });
+        var yaxis = 1;
+        if (plot_key.indexOf('bytes') != -1) {
+            yaxis = 2;
+            extra = {yaxes: axes_rate_and_bytes};
+        }
+        chart_data.push({label: plot_key, data: d, yaxis: yaxis});
     });
-    chart_data.push({label: 'send-rate', data: d});
-
-    plot_data(div, chart_data);
+    plot_data(div, chart_data, extra);
 }
 
 function plot_r_l(div, dimensions, dimension_values, data) {
@@ -137,7 +144,7 @@ function plot_r_l(div, dimensions, dimension_values, data) {
     var chart_data = [];
     var d = [];
     $.each(x_values, function(i, x_val) {
-        d.push([x_val, data[x_val]['send-rate']]);
+        d.push([x_val, data[x_val]['send-msg-rate']]);
     });
     chart_data.push({label: 'rate achieved', data: d, yaxis: 1});
 
@@ -210,3 +217,7 @@ var axes_rate_and_latency = [{min:       0},
                               transform: log_transform,
                               ticks:     log_ticks,
                               position:  "right"}];
+
+var axes_rate_and_bytes = [{min:       0},
+                           {min:       0,
+                            position:  "right"}];

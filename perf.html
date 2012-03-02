@@ -29,10 +29,11 @@
     </p>
 
     <p>
-      All the charts and statistics shown were measured on a XXX FIXME
-      XXX (the fastest machine we had lying around). One major thing
-      that's not ideal is we ran the clients on the same machine as
-      the server - just due to the limited hardware we had available.
+      All the charts and statistics shown were measured on a PowerEdge
+      R610 with dual Xeon E5530s and 40GB RAM. Largely because it was
+      the fastest machine we had lying around. One major thing that's
+      not ideal is we ran the clients on the same machine as the
+      server - just due to the limited hardware we had available.
     </p>
 
     <p>
@@ -370,14 +371,16 @@
          type="x-y"
          scenario="message-sizes-small"
          x-key="minMsgSize"
+         plot-keys="send-msg-rate send-bytes-rate"
          x-axis="message size (bytes)"
          y-axis="rate (msg/s)"
+         y-axis2="rate (bytes/s)"
          legend="ne"></div>
 
     <p>
       Here (again) we're sending unacked / unconfirmed messages as
       fast as possible, but this time we vary the message size. Note
-      how the message rate drops off rapidly then plateaus. TODO: why
+      how the message rate drops rapidly around 600-700 bytes. TODO: why
       on earth is this?
     </p>
 
@@ -386,13 +389,20 @@
          type="x-y"
          scenario="message-sizes-large"
          x-key="minMsgSize"
+         plot-keys="send-msg-rate send-bytes-rate"
          x-axis="message size (bytes)"
          y-axis="rate (msg/s)"
+         y-axis2="rate (bytes/s)"
          legend="ne"></div>
 
     <p>
-      TODO: another chart, much bigger messages.
+      Looking at some larger message sizes we can see that (of course)
+      the message rate drops further as the size increases, but the
+      actual number of bytes sent increases as we have less and less
+      routing overhead.
     </p>
+
+    <hr/>
 
     <h3>n -> 0 sending rate vs number of producers, for various message sizes</h3>
     <div class="chart"
