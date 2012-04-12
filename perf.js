@@ -158,8 +158,9 @@ function plot_r_l(div, dimensions, dimension_values, data) {
 }
 
 function plot_data(div, chart_data, extra) {
-    var legend = attr_or_default(div, 'legend', 'se');
-    var cssClass = div.attr('class');
+    var legend     = attr_or_default(div, 'legend', 'se');
+    var x_axis_log = attr_or_default(div, 'x-axis-log', 'false') == 'true';
+    var cssClass   = div.attr('class');
 
     var chrome = {
         series: { lines: { show: true } },
@@ -177,6 +178,10 @@ function plot_data(div, chart_data, extra) {
         for (var k in extra) {
             chrome[k] = extra[k];
         }
+    }
+
+    if (x_axis_log) {
+        chrome['xaxis'] = log_x_axis;
     }
 
     var cell = div.wrap('<td />').parent();;
@@ -221,3 +226,7 @@ var axes_rate_and_latency = [{min:       0},
 var axes_rate_and_bytes = [{min:       0},
                            {min:       0,
                             position:  "right"}];
+
+var log_x_axis = {min:       1,
+                  transform: log_transform,
+                  ticks:     log_ticks};
