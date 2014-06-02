@@ -1,25 +1,7 @@
-var main_results;
-
-$(document).ready(function() {
-    $.ajax({
-        url: 'results.js',
-        success: function(data) {
-            main_results = JSON.parse(data);
-            $('.chart, .small-chart').map(function() {
-                plot($(this));
-            });
-            $('.summary').map(function() {
-                summarise($(this));
-            });
-        },
-        fail: function() { alert('error loading results.js'); }
-    });
-});
-
-function summarise(div) {
+function summarise(div, results) {
     var scenario = div.attr('data-scenario');
     var mode     = div.attr('data-mode');
-    var data     = main_results[scenario];
+    var data     = results[scenario];
 
     var rate;
     if (mode == 'send') {
@@ -35,11 +17,11 @@ function summarise(div) {
     div.append('<strong>' + rate + '</strong>msg/s');
 }
 
-function plot(div) {
+function plot(div, results) {
     var file = div.attr('data-file');
 
     if (file == undefined) {
-        plot0(div, main_results);
+        plot0(div, results);
     }
     else {
         $.ajax({
