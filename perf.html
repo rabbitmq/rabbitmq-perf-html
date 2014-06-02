@@ -77,13 +77,13 @@
 
     <h3>Simple 1 -> 1 autoack (2.7.1)</h3>
     <div class="chart"
-         type="time"
-         latency="true"
-         x-axis="time (s)"
-         y-axis="rate (msg/s)"
-         y-axis2="latency (μs)"
-         file="results-mini-2.7.1.js"
-         scenario="no-ack-long"></div>
+         data-type="time"
+         data-latency="true"
+         data-x-axis="time (s)"
+         data-y-axis="rate (msg/s)"
+         data-y-axis2="latency (μs)"
+         data-file="results-mini-2.7.1.js"
+         data-scenario="no-ack-long"></div>
 
     <p>
       Ouch! That's rather unpleasant. Several things should be obvious:
@@ -119,12 +119,12 @@
 
     <h3>Simple 1 -> 1 autoack (2.8.1)</h3>
     <div class="chart"
-         type="time"
-         latency="true"
-         x-axis="time (s)"
-         y-axis="rate (msg/s)"
-         y-axis2="latency (μs)"
-         scenario="no-ack-long"></div>
+         data-type="time"
+         data-latency="true"
+         data-x-axis="time (s)"
+         data-y-axis="rate (msg/s)"
+         data-y-axis2="latency (μs)"
+         data-scenario="no-ack-long"></div>
 
     <p>
       That looks like a much calmer experience! The send rate, receive
@@ -176,10 +176,10 @@
 
     <h3>1 -> 1 sending rate attempted vs latency</h3>
     <div class="chart"
-         type="r-l"
-         x-axis="rate attempted (msg/s)"
-         y-axis="rate (msg/s)"
-         scenario="rate-vs-latency"></div>
+         data-type="r-l"
+         data-x-axis="rate attempted (msg/s)"
+         data-y-axis="rate (msg/s)"
+         data-scenario="rate-vs-latency"></div>
 
     <p>
       Note that the horizontal axis is no longer time. We're now
@@ -226,12 +226,12 @@
     <h2>Some Simple Scenarios</h2>
 
     <div class="box">
-      <div class="summary" scenario="no-ack">auto-ack</div>
+      <div class="summary" data-scenario="no-ack">auto-ack</div>
       <div class="small-chart"
-           type="time"
-           x-axis="time (s)"
-           y-axis=""
-           scenario="no-ack"></div>
+           data-type="time"
+           data-x-axis="time (s)"
+           data-y-axis=""
+           data-scenario="no-ack"></div>
       <p>
         This first scenario is the simplest - just one producer and
         one consumer. So we have a baseline.
@@ -239,12 +239,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="no-consume">no-consume</div>
+      <div class="summary" data-scenario="no-consume">no-consume</div>
       <div class="small-chart"
-           type="time"
-           x-axis="time (s)"
-           y-axis=""
-           scenario="no-consume"></div>
+           data-type="time"
+           data-x-axis="time (s)"
+           data-y-axis=""
+           data-scenario="no-consume"></div>
       <p>
         Of course we want to produce impressive figures. So we can go
         a bit faster than that - if we don't consume anything then we
@@ -253,12 +253,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="headline-publish" mode="send">max publish</div>
+      <div class="summary" data-scenario="headline-publish" mode="send">max publish</div>
       <div class="small-chart"
-           type="time"
-         x-axis="time (s)"
-           y-axis=""
-           scenario="headline-publish"></div>
+           data-type="time"
+           data-x-axis="time (s)"
+           data-y-axis=""
+           data-scenario="headline-publish"></div>
       <p>
         This uses a couple of the cores on our server - but not all of
         them. So for the best headline-grabbing rate, we start a
@@ -267,12 +267,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="headline-consume" mode="recv">max consume</div>
+      <div class="summary" data-scenario="headline-consume" mode="recv">max consume</div>
       <div class="small-chart"
-         type="time"
-           x-axis="time (s)"
-           y-axis=""
-           scenario="headline-consume"></div>
+          data-type="time"
+           data-x-axis="time (s)"
+           data-y-axis=""
+           data-scenario="headline-consume"></div>
       <p>
         Of course, consuming is rather important! So for the headline
         consuming rate, we publish to a large number of consumers in
@@ -287,9 +287,12 @@
     </p>
 
     <div class="box">
-      <div class="summary" scenario="no-ack-mandatory">mandatory</div>
-      <div class="small-chart" type="time" x-axis="time (s)" y-axis=""
-           scenario="no-ack-mandatory"></div>
+      <div class="summary" data-scenario="no-ack-mandatory">mandatory</div>
+      <div class="small-chart" 
+           data-type="time" 
+           data-x-axis="time (s)" 
+           data-y-axis=""
+           data-scenario="no-ack-mandatory"></div>
       <p>
         Now let's try publishing with the mandatory flag set. We drop
         to about 40% of the non-mandatory rate. The reason for this is
@@ -302,9 +305,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="no-ack-immediate">immediate</div>
-      <div class="small-chart" type="time" x-axis="time (s)" y-axis=""
-           scenario="no-ack-immediate"></div>
+      <div class="summary" data-scenario="no-ack-immediate">immediate</div>
+      <div class="small-chart" 
+           data-type="time" 
+           data-x-axis="time (s)" 
+           data-y-axis=""
+           data-scenario="no-ack-immediate"></div>
       <p>
         The immediate flag gives us almost exactly the same drop in
         performance. This isn't hugely surprising - it has to make the
@@ -313,9 +319,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="ack">ack</div>
-      <div class="small-chart" type="time" x-axis="time (s)" y-axis=""
-           scenario="ack"></div>
+      <div class="summary" data-scenario="ack">ack</div>
+      <div class="small-chart" 
+           data-type="time" 
+           data-x-axis="time (s)" 
+           data-y-axis=""
+           data-scenario="ack"></div>
       <p>
         Scrapping the rarely-used mandatory and immediate flags, let's
         try turning on acknowledgements for delivered messages. We still
@@ -326,9 +335,12 @@
     </div>
 
     <div class="box">
-      <div class="summary" scenario="ack-confirm">ack-confirm</div>
-      <div class="small-chart" type="time" x-axis="time (s)" y-axis=""
-           scenario="ack-confirm"></div>
+      <div class="summary" data-scenario="ack-confirm">ack-confirm</div>
+      <div class="small-chart" 
+           data-type="time" 
+           data-x-axis="time (s)" 
+           data-y-axis=""
+           data-scenario="ack-confirm"></div>
       <p>
         Now we turn on publish confirms as well. Performance drops a
         little more but we're still at over 60% the speed of neither
@@ -338,9 +350,12 @@
 
     <div class="box">
       <div class="summary"
-           scenario="ack-confirm-persist">a-c-persist</div>
-      <div class="small-chart" type="time" x-axis="time (s)" y-axis=""
-           scenario="ack-confirm-persist"></div>
+           data-scenario="ack-confirm-persist">a-c-persist</div>
+      <div class="small-chart" 
+           data-type="time" 
+           data-x-axis="time (s)" 
+           data-y-axis=""
+           data-scenario="ack-confirm-persist"></div>
       <p>
         Finally, we enable message persistence. The rate becomes much
         lower, since we're throwing all those messages at the disk as
@@ -368,14 +383,14 @@
 
     <h3>1 -> 1 sending rate message sizes</h3>
     <div class="chart"
-         type="x-y"
-         scenario="message-sizes-large"
-         x-key="minMsgSize"
-         plot-keys="send-msg-rate send-bytes-rate"
-         x-axis="message size (bytes)"
-         y-axis="rate (msg/s)"
-         y-axis2="rate (bytes/s)"
-         legend="ne"></div>
+         data-type="x-y"
+         data-scenario="message-sizes-large"
+         data-x-key="minMsgSize"
+         data-plot-keys="send-msg-rate send-bytes-rate"
+         data-x-axis="message size (bytes)"
+         data-y-axis="rate (msg/s)"
+         data-y-axis2="rate (bytes/s)"
+         data-legend="ne"></div>
 
     <p>
       Here (again) we're sending unacked / unconfirmed messages as
@@ -394,23 +409,23 @@
 
     <h3>n -> 0 sending msg rate vs number of producers, for various message sizes</h3>
     <div class="chart"
-         type="series"
-         scenario="message-sizes-and-producers"
-         x-key="producerCount"
-         x-axis="producers"
-         y-axis="rate (msg/s)"
-         plot-key="send-msg-rate"
-         series-key="minMsgSize"></div>
+         data-type="series"
+         data-scenario="message-sizes-and-producers"
+         data-x-key="producerCount"
+         data-x-axis="producers"
+         data-y-axis="rate (msg/s)"
+         data-plot-key="send-msg-rate"
+         data-series-key="minMsgSize"></div>
 
     <h3>n -> 0 sending bytes rate vs number of producers, for various message sizes</h3>
     <div class="chart"
-         type="series"
-         scenario="message-sizes-and-producers"
-         x-key="producerCount"
-         x-axis="producers"
-         y-axis="rate (bytes/s)"
-         plot-key="send-bytes-rate"
-         series-key="minMsgSize"></div>
+         data-type="series"
+         data-scenario="message-sizes-and-producers"
+         data-x-key="producerCount"
+         data-x-axis="producers"
+         data-y-axis="rate (bytes/s)"
+         data-plot-key="send-bytes-rate"
+         data-series-key="minMsgSize"></div>
 
     <p>
       In these tests we can see that for small messages it only takes
@@ -438,15 +453,15 @@
 
     <h3>1 -> n recving rate vs consumer count / prefetch count</h3>
     <div class="chart"
-         type="series"
-         scenario="consumers"
-         x-key="consumerCount"
-         x-axis="number of consumers"
-         x-axis-log="true"
-         y-axis="rate (msg/s)"
-         legend="ne"
-         plot-key="recv-msg-rate"
-         series-key="prefetchCount"></div>
+         data-type="series"
+         data-scenario="consumers"
+         data-x-key="consumerCount"
+         data-x-axis="number of consumers"
+         data-x-axis-log="true"
+         data-y-axis="rate (msg/s)"
+         data-legend="ne"
+         data-plot-key="recv-msg-rate"
+         data-series-key="prefetchCount"></div>
 
     <p>
       The first thing to notice is that tiny prefetch counts really
@@ -501,10 +516,10 @@
 
     <h3>Queue load / drain 500k messages</h3>
     <div class="chart"
-         type="time"
-         x-axis="time (s)"
-         y-axis="rate (msg/s)"
-         scenario="fill-drain-small-queue"></div>
+         data-type="time"
+         data-x-axis="time (s)"
+         data-y-axis="rate (msg/s)"
+         data-scenario="fill-drain-small-queue"></div>
 
     <p>
       In this small case we can see fairly consistent performance:
@@ -514,10 +529,10 @@
 
     <h3>Queue load / drain 5M messages</h3>
     <div class="chart"
-         type="time"
-         x-axis="time (s)"
-         y-axis="rate (msg/s)"
-         scenario="fill-drain-large-queue"></div>
+         data-type="time"
+         data-x-axis="time (s)"
+         data-y-axis="rate (msg/s)"
+         data-scenario="fill-drain-large-queue"></div>
 
     <p>
       But when we have a larger queue we see that the performance

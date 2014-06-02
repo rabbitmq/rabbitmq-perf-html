@@ -17,8 +17,8 @@ $(document).ready(function() {
 });
 
 function summarise(div) {
-    var scenario = div.attr('scenario');
-    var mode     = div.attr('mode');
+    var scenario = div.attr('data-scenario');
+    var mode     = div.attr('data-mode');
     var data     = main_results[scenario];
 
     var rate;
@@ -36,7 +36,7 @@ function summarise(div) {
 }
 
 function plot(div) {
-    var file = div.attr('file');
+    var file = div.attr('data-file');
 
     if (file == undefined) {
         plot0(div, main_results);
@@ -53,8 +53,8 @@ function plot(div) {
 }
 
 function plot0(div, results) {
-    var type     = div.attr('type');
-    var scenario = div.attr('scenario');
+    var type     = div.attr('data-type');
+    var scenario = div.attr('data-scenario');
 
     if (type == 'time') {
         var data = results[scenario];
@@ -78,7 +78,7 @@ function plot0(div, results) {
 }
 
 function plot_time(div, data) {
-    var show_latency = div.attr('latency') == 'true';
+    var show_latency = div.attr('data-latency') == 'true';
     var chart_data = [];
     var keys = show_latency
        ? ['send-msg-rate', 'recv-msg-rate', 'avg-latency']
@@ -96,8 +96,8 @@ function plot_time(div, data) {
 }
 
 function plot_series(div, dimensions, dimension_values, data) {
-    var x_key         = div.attr('x-key');
-    var series_key    = div.attr('series-key');
+    var x_key         = div.attr('data-x-key');
+    var series_key    = div.attr('data-series-key');
     var series_first  = dimensions[0] == series_key;
     var series_values = dimension_values[series_key];
     var x_values      = dimension_values[x_key];
@@ -118,7 +118,7 @@ function plot_series(div, dimensions, dimension_values, data) {
 }
 
 function plot_x_y(div, dimensions, dimension_values, data) {
-    var x_key = div.attr('x-key');
+    var x_key = div.attr('data-x-key');
     var x_values = dimension_values[x_key];
     var plot_keys = attr_or_default(div, 'plot-keys', 'send-msg-rate').split(' ');
     var chart_data = [];
@@ -188,11 +188,11 @@ function plot_data(div, chart_data, extra) {
     var row = cell.wrap('<tr/>').parent();
     row.wrap('<table class="' + cssClass + '-wrapper"/>');
 
-    cell.before('<td class="yaxis">' + div.attr('y-axis') + '</td>');
-    if (div.attr('y-axis2')) {
-        cell.after('<td class="yaxis">' + div.attr('y-axis2') + '</td>');
+    cell.before('<td class="yaxis">' + div.attr('data-y-axis') + '</td>');
+    if (div.attr('data-y-axis2')) {
+        cell.after('<td class="yaxis">' + div.attr('data-y-axis2') + '</td>');
     }
-    row.after('<tr><td></td><td class="xaxis">' + div.attr('x-axis') +
+    row.after('<tr><td></td><td class="xaxis">' + div.attr('data-x-axis') +
               '</td><td></td></tr>');
 
     $.plot(div, chart_data, chrome);
