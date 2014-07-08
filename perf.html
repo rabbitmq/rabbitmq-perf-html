@@ -10,17 +10,10 @@
     <script language="javascript" type="text/javascript" src="perf.js"></script>
     <script language="javascript" type="text/javascript">
     $(document).ready(function() {
-      var main_results;
         $.ajax({
             url: 'results.js',
             success: function(data) {
-                main_results = JSON.parse(data);
-                $('.chart, .small-chart').map(function() {
-                    plot($(this), main_results);
-                });
-                $('.summary').map(function() {
-                    summarise($(this), main_results);
-                });
+                render_graphs(JSON.parse(data));
             },
             fail: function() { alert('error loading results.js'); }
         });

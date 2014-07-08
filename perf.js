@@ -1,3 +1,12 @@
+function render_graphs(results) {
+    $('.chart, .small-chart').map(function() {
+        plot($(this), results);
+    });
+    $('.summary').map(function() {
+        summarise($(this), results);
+    });
+}
+
 function summarise(div, results) {
     var scenario = div.attr('data-scenario');
     var mode     = div.attr('data-mode');
