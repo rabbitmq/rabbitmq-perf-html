@@ -81,14 +81,15 @@ We support several types of graphs, that you can specify using the
 `data-type` attribute:
 
 - `time`: this graph can plot several variables on the y-axis while on
-- the x-axis plots time. For example you could compare the send and
-- receive rate over a period of time.  `series`: will plot how
-- changing a variable affects the results of the benchmark, for
-- example, what's the difference in speed from sending small, medium
-- and large messages?. This type of graph can show you that.  `x-y`:
-- we can use this one to compare for example how message size affects
-- the message rate per second. This graph from the second blogpost
-- serves as an example.
+  the x-axis plots time. For example you could compare the send and
+  receive rate over a period of time.
+- `series`: will plot how changing a variable affects the results of
+  the benchmark, for example, what's the difference in speed from
+  sending small, medium and large messages?. This type of graph can
+  show you that.
+- `x-y`: we can use this one to compare for example how message size
+  affects the message rate per second. This graph from the second
+  blogpost serves as an example.
 
 ![1 -> 1 sending rate message
  sizes](./images/1_1_sending_rates_msg_sizes.png)
@@ -182,8 +183,8 @@ Benchmarks specifications should be written in JSON format. We will
 have an array containing one or more benchmark scenarios to run. For
 example:
 
-```javascript 
-[ {'name': 'no-ack-long', 'type': 'simple', 'interval': 10000, 
+```javascript
+[ {'name': 'no-ack-long', 'type': 'simple', 'interval': 10000,
   'params': [{'time-limit': 500}]},
 
  {'name': 'headline-publish', 'type': 'simple', 'params':
@@ -200,7 +201,7 @@ There are three kind of benchmark scenarios:
 - `varying`: can vary some variables during the benchmark, for example
 - message size as shown in the following scenario snippet:
 
-```javascript 
+```javascript
 {'name': 'message-sizes-small', 'type': 'varying',
  'params': [{'time-limit': 30}], 'variables': [{'name':
  'min-msg-size', 'values': [0, 100, 200, 500, 1000, 2000, 5000]}]},
