@@ -52,9 +52,13 @@ HTML"), the following HTML snippet will display the graph for the
 benchmark that we just ran:
 
 ```html
-<div class="chart" data-type="time" data-latency="true"
-  data-x-axis="time (s)" data-y-axis="rate (msg/s)"
-  data-y-axis2="latency (μs)" data-scenario="consume"></div>
+<div class="chart"
+  data-type="time" 
+  data-latency="true"
+  data-x-axis="time (s)" 
+  data-y-axis="rate (msg/s)"
+  data-y-axis2="latency (μs)" 
+  data-scenario="consume"></div>
 ```
 
 Here we use HTML's _data_ attributes to tell the performance library
@@ -69,8 +73,11 @@ If instead of the CSS class `"chart"` we use the `"small-chart"` CSS
 class, then we can get a graph like the one below:
 
 ```html
-<div class="small-chart" data-type="time" data-x-axis="time(s)"
-  data-y-axis="" data-scenario="no-ack"></div>
+<div class="small-chart" 
+  data-type="time" 
+  data-x-axis="time(s)"\
+  data-y-axis="" 
+  data-scenario="no-ack"></div>
 ```
 
 ![Small Chart Example](./images/small-chart.png)
@@ -84,7 +91,8 @@ We support several types of graphs, that you can specify using the
   the x-axis plots time. For example you could compare the send and
   receive rate over a period of time.
 
-On the previous section we show how to display this kind of graphs using HTML.
+On the previous section we show how to display this kind of graphs
+using HTML.
 
 - `series`: will plot how changing a variable affects the results of
   the benchmark, for example, what's the difference in speed from
