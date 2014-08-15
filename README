@@ -234,7 +234,7 @@ The following parameters can be specified for a scenario:
 - consumerMsgCount: how many messages should the consumer
   consume. Defaults to `0`.
 - flags: flags to pass to the Producer, like `"mandatory"`,
-  `"immediate"` or `"persistent"`. Defaults to an empty list.
+  or `"persistent"`. Defaults to an empty list.
 - frameMax: maximum frame size in AMQP, used to test the difference
   big messages make during publishing. Defaults to `0`.
 - heartbeat: RabbitMQ connection heartbeat in seconds. Defaults to
