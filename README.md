@@ -57,7 +57,7 @@ how the graph should be displayed. We are telling it to load the
 messages per second on the y-axis and a second y-axis showing latency
 in microseconds; all of this displayed in a _time_ kind of graph:
 
-![Publish Consume Graph](./examples/images/publish-consume-graph.png)
+![Publish Consume Graph](./images/publish-consume-graph.png)
 
 If instead of the CSS class `"chart"` we use the `"small-chart"` CSS
 class, then we can get a graph like the one below:
@@ -65,7 +65,7 @@ class, then we can get a graph like the one below:
 ```html <div class="small-chart" data-type="time" data-x-axis="time
 (s)" data-y-axis="" data-scenario="no-ack"></div> ```
 
-![Small Chart Example](./examples/images/small-chart.png)
+![Small Chart Example](./images/small-chart.png)
 
 ## Type of graphs ##
 
@@ -83,14 +83,14 @@ We support several types of graphs, that you can specify using the
 - serves as an example.
 
 ![1 -> 1 sending rate message
- sizes](./examples/images/1_1_sending_rates_msg_sizes.png)
+ sizes](./images/1_1_sending_rates_msg_sizes.png)
 
 - `r-l`: This type of graph can help us compare the sending rate of
   messages vs. the latency. See scenario "1 -> 1 sending rate
   attempted vs latency" from the first blogpost for an example:
 
 ![1 -> 1 sending rate attempted vs
- latency](./examples/images/1_1_sending_rates_latency.png)
+ latency](./images/1_1_sending_rates_latency.png)
 
 ## Supported HTML attributes ##
 
