@@ -83,10 +83,27 @@ We support several types of graphs, that you can specify using the
 - `time`: this graph can plot several variables on the y-axis while on
   the x-axis plots time. For example you could compare the send and
   receive rate over a period of time.
+
+On the previous section we show how to display this kind of graphs using HTML.
+
 - `series`: will plot how changing a variable affects the results of
   the benchmark, for example, what's the difference in speed from
   sending small, medium and large messages?. This type of graph can
   show you that.
+
+Here's an HTML example of a `series` graph:
+
+```html
+<div class="chart"
+  data-type="series"
+  data-scenario="message-sizes-and-producers"
+  data-x-key="producerCount"
+  data-x-axis="producers"
+  data-y-axis="rate (msg/s)"
+  data-plot-key="send-msg-rate"
+  data-series-key="minMsgSize"></div>
+```
+
 - `x-y`: we can use this one to compare for example how message size
   affects the message rate per second. This graph from the second
   blogpost serves as an example.
@@ -94,12 +111,36 @@ We support several types of graphs, that you can specify using the
 ![1 -> 1 sending rate message
  sizes](./images/1_1_sending_rates_msg_sizes.png)
 
+Here's how to represent in HTML a `x-y` graph:
+
+```html
+<div class="chart"
+  data-type="x-y"
+  data-scenario="message-sizes-large"
+  data-x-key="minMsgSize"
+  data-plot-keys="send-msg-rate send-bytes-rate"
+  data-x-axis="message size (bytes)"
+  data-y-axis="rate (msg/s)"
+  data-y-axis2="rate (bytes/s)"
+  data-legend="ne"></div>
+```
+
 - `r-l`: This type of graph can help us compare the sending rate of
   messages vs. the latency. See scenario "1 -> 1 sending rate
   attempted vs latency" from the first blogpost for an example:
 
 ![1 -> 1 sending rate attempted vs
  latency](./images/1_1_sending_rates_latency.png)
+
+Here how's to draw a `r-l` graph with HTML:
+
+```html
+<div class="chart"
+  data-type="r-l"
+  data-x-axis="rate attempted (msg/s)"
+  data-y-axis="rate (msg/s)"
+  data-scenario="rate-vs-latency"></div>
+```
 
 ## Supported HTML attributes ##
 
