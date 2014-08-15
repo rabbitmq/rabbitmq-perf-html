@@ -24,15 +24,19 @@ HTML using this tool.
 To run a benchmark we need to create a _benchmark specification file_,
 which is simply a JSON file like this one:
 
-```javascript [{'name': 'consume', 'type': 'simple', 'params':
-[{'time-limit': 30, 'producer-count': 4, 'consumer-count': 2}]}] ```
+```javascript
+[{'name': 'consume', 'type': 'simple', 'params':
+[{'time-limit': 30, 'producer-count': 4, 'consumer-count': 2}]}]
+```
 
 Place that code in a file called `publish-consume-spec.js` and then go
 to the folder where you have the Java client and run the following
 command to start the benchmark:
 
-```bash ./runjava.sh com.rabbitmq.examples.PerfTestMulti
-publish-consume-spec.js publish-consume-result.js ```
+```bash
+./runjava.sh com.rabbitmq.examples.PerfTestMulti
+publish-consume-spec.js publish-consume-result.js
+```
 
 That command will start one benchmark scenario where four producers
 will send messages to RabbitMQ over a period of thirty seconds. At the
@@ -47,9 +51,11 @@ Provided you have included our libraries (see bellow "Boilerplate
 HTML"), the following HTML snippet will display the graph for the
 benchmark that we just ran:
 
-```html <div class="chart" data-type="time" data-latency="true"
-data-x-axis="time (s)" data-y-axis="rate (msg/s)"
-data-y-axis2="latency (μs)" data-scenario="consume"></div> ```
+```html
+<div class="chart" data-type="time" data-latency="true"
+  data-x-axis="time (s)" data-y-axis="rate (msg/s)"
+  data-y-axis2="latency (μs)" data-scenario="consume"></div>
+```
 
 Here we use HTML's _data_ attributes to tell the performance library
 how the graph should be displayed. We are telling it to load the
@@ -62,8 +68,10 @@ in microseconds; all of this displayed in a _time_ kind of graph:
 If instead of the CSS class `"chart"` we use the `"small-chart"` CSS
 class, then we can get a graph like the one below:
 
-```html <div class="small-chart" data-type="time" data-x-axis="time
-(s)" data-y-axis="" data-scenario="no-ack"></div> ```
+```html
+<div class="small-chart" data-type="time" data-x-axis="time(s)"
+  data-y-axis="" data-scenario="no-ack"></div>
+```
 
 ![Small Chart Example](./images/small-chart.png)
 
@@ -135,14 +143,12 @@ The file `./examples/sample.html` shows a full HTML page used to
 display some results. You should include the following Javascript
 Files:
 
-```html <!--[if lte IE 8]><script language="javascript"
-type="text/javascript"
-src="../lib/excanvas.min.js"></script><![endif]--> <script
-language="javascript" type="text/javascript"
-src="../lib/jquery.min.js"></script> <script language="javascript"
-type="text/javascript" src="../lib/jquery.flot.min.js"></script>
-<script language="javascript" type="text/javascript"
-src="../perf.js"></script> ```
+```html
+<!--[if lte IE 8]><script language="javascript"type="text/javascript" src="../lib/excanvas.min.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="../lib/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="../lib/jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="../perf.js"></script>
+```
 
 Our `perf.js` library depends _jQuery_ and _jQuery Flot_ library for
 drawing the graphs, and _excanvas_ in order to support older browsers.
@@ -150,11 +156,20 @@ drawing the graphs, and _excanvas_ in order to support older browsers.
 Once we loaded the libraries we can initialize our page with the
 following Javascript:
 
-```html <script language="javascript" type="text/javascript">
-$(document).ready(function() { var main_results; $.ajax({ url:
-'publish-consume-result.js', success: function(data) {
-render_graphs(JSON.parse(data)); }, fail: function() { alert('error
-loading publish-consume-result.js'); } }); }); </script> ```
+```html
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+  var main_results;
+    $.ajax({
+        url: 'publish-consume-result.js',
+        success: function(data) {
+            render_graphs(JSON.parse(data));
+        },
+        fail: function() { alert('error loading publish-consume-result.js'); }
+    });
+});
+</script>
+```
 
 There we load the file with the benchmark results and pass that to our
 `render_graphs` function, which will take care of the rest, provided
@@ -167,12 +182,13 @@ Benchmarks specifications should be written in JSON format. We will
 have an array containing one or more benchmark scenarios to run. For
 example:
 
-```javascript [ {'name': 'no-ack-long', 'type': 'simple', 'interval':
-10000, 'params': [{'time-limit': 500}]},
+```javascript 
+[ {'name': 'no-ack-long', 'type': 'simple', 'interval': 10000, 
+  'params': [{'time-limit': 500}]},
 
  {'name': 'headline-publish', 'type': 'simple', 'params':
   [{'time-limit': 30, 'producer-count': 10, 'consumer-count': 0}]}]
-  ```
+```
 
 This JSON object specifies two scenarios `'no-ack-long'` and
 `'headline-publish'`, of the type `simple` and they set some
@@ -184,7 +200,8 @@ There are three kind of benchmark scenarios:
 - `varying`: can vary some variables during the benchmark, for example
 - message size as shown in the following scenario snippet:
 
-```javascript {'name': 'message-sizes-small', 'type': 'varying',
+```javascript 
+{'name': 'message-sizes-small', 'type': 'varying',
  'params': [{'time-limit': 30}], 'variables': [{'name':
  'min-msg-size', 'values': [0, 100, 200, 500, 1000, 2000, 5000]}]},
  ```
