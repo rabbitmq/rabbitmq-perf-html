@@ -311,3 +311,12 @@ The following parameters can be specified for a scenario:
 - uri: the AMQP URI. See the [URI
   Spec](https://www.rabbitmq.com/uri-spec.html). Defaults to
   `"amqp://localhost"`.
+
+
+## Note for Chrome Users ##
+
+Chrome users may need to view the page via a web server, not file://.
+
+$ python -m SimpleHTTPServer
+
+will do in a pinch.
