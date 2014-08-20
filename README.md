@@ -246,9 +246,10 @@ parameters for the benchmarks, like `producer-count`.
 
 There are three kind of benchmark scenarios:
 
-- `simple`: `rate-vs-latency`: Compares message rate with latency.
+- `simple`: 
+- `rate-vs-latency`: Compares message rate with latency.
 - `varying`: can vary some variables during the benchmark, for example
-- message size as shown in the following scenario snippet:
+  message size as shown in the following scenario snippet:
 
 ```javascript
 {'name': 'message-sizes-small', 'type': 'varying',
