@@ -246,8 +246,9 @@ parameters for the benchmarks, like `producer-count`.
 
 There are three kind of benchmark scenarios:
 
-- `simple`: 
-- `rate-vs-latency`: Compares message rate with latency.
+- `simple`: runs a basic benchmark based on the parameters on the spec
+  as seen in the example above.
+- `rate-vs-latency`: compares message rate with latency.
 - `varying`: can vary some variables during the benchmark, for example
   message size as shown in the following scenario snippet:
 
