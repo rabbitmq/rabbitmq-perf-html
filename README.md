@@ -53,11 +53,11 @@ benchmark that we just ran:
 
 ```html
 <div class="chart"
-  data-type="time" 
+  data-type="time"
   data-latency="true"
-  data-x-axis="time (s)" 
+  data-x-axis="time (s)"
   data-y-axis="rate (msg/s)"
-  data-y-axis2="latency (μs)" 
+  data-y-axis2="latency (μs)"
   data-scenario="consume"></div>
 ```
 
@@ -73,10 +73,10 @@ If instead of the CSS class `"chart"` we use the `"small-chart"` CSS
 class, then we can get a graph like the one below:
 
 ```html
-<div class="small-chart" 
-  data-type="time" 
+<div class="small-chart"
+  data-type="time"
   data-x-axis="time(s)"\
-  data-y-axis="" 
+  data-y-axis=""
   data-scenario="no-ack"></div>
 ```
 
