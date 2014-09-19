@@ -279,7 +279,9 @@ The following parameters can be specified for a scenario:
   an empty name, letting RabbitMQ provide a random one.
 - routingKey: routing key to be used during the benchmark. Defaults to
   an empty routing key.
-- samplingInterval: take samples every X seconds. Defaults to 1.
+- randomRoutingKey: allows the publisher to send a different routing
+  key per published message. Useful when testing exchanges like the
+  consistent hashing one. Defaults to `false`.
 - producerRateLimit: limit number of messages a producer will produce
   per second. Defaults to `0.0f`
 - consumerRateLimit: limit number of messages a consumer will consume
@@ -309,12 +311,10 @@ The following parameters can be specified for a scenario:
   publish. Defaults to `0`.
 - consumerMsgCount: how many messages should the consumer
   consume. Defaults to `0`.
+- msgCount: single flag to set the previous two counts to the same
+  value.
 - flags: flags to pass to the Producer, like `"mandatory"`,
   or `"persistent"`. Defaults to an empty list.
-- frameMax: maximum frame size in AMQP, used to test the difference
-  big messages make during publishing. Defaults to `0`.
-- heartbeat: RabbitMQ connection heartbeat in seconds. Defaults to
-  `0`.
 - predeclared: tells the benchmark tool if the exchange/queue name
   provided already exist in the broker. Defaults to `false`.
 - uri: the AMQP URI. See the [URI
