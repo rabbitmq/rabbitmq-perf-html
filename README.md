@@ -84,7 +84,7 @@ class, then we can get a graph like the one below:
 
 ## Type of graphs ##
 
-We support several types of graphs, that you can specify using the
+We support several `types` of graphs, that you can specify using the
 `data-type` attribute:
 
 - `time`: this graph can plot several variables on the y-axis while on
@@ -150,10 +150,17 @@ Here how's to draw a `r-l` graph with HTML:
   data-scenario="rate-vs-latency"></div>
 ```
 
+To see how all these can be placed together take a look inside the
+examples to the files `various-spec.js` which puts together all the
+benchmark specifications mentioned above, then `various-result.js` has
+the result of the benchmark as run in the computer used to write this,
+and then `various.html` shows you how to display said results on an
+HTML page.
+
 ## Supported HTML attributes ##
 
 We can use several HTML attributes to tell the library how to draw the
-chart. Here we list the supported ones.
+chart. Here's the list of the ones we support.
 
 - `data-file`: this specifies the file from where to load the
   benchmark results, for example
