@@ -130,7 +130,7 @@ function plot_x_y(div, dimensions, dimension_values, data) {
 }
 
 function plot_r_l(div, dimensions, dimension_values, data) {
-    var x_values = dimension_values['rateLimit'];
+    var x_values = dimension_values['producerRateLimit'];
 
     var chart_data = [];
     var d = [];
