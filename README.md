@@ -271,47 +271,47 @@ As you can see `min-msg-size` will be converted to `minMsgSize`.
 
 The following parameters can be specified for a scenario:
 
-- exchangeType: exchange type to be used during the
+- exchange-type: exchange type to be used during the
   benchmark. Defaults to `'direct'`
-- exchangeName: exchange name to be used during the
+- exchange-name: exchange name to be used during the
   benchmark. Defaults to whatever `exchangeType` was set to.
-- queueName: queue name to be used during the benchmark. Defaults to
+- queue-name: queue name to be used during the benchmark. Defaults to
   an empty name, letting RabbitMQ provide a random one.
-- routingKey: routing key to be used during the benchmark. Defaults to
+- routing-key: routing key to be used during the benchmark. Defaults to
   an empty routing key.
-- randomRoutingKey: allows the publisher to send a different routing
+- random-routing-key: allows the publisher to send a different routing
   key per published message. Useful when testing exchanges like the
   consistent hashing one. Defaults to `false`.
-- producerRateLimit: limit number of messages a producer will produce
+- producer-rate-limit: limit number of messages a producer will produce
   per second. Defaults to `0.0f`
-- consumerRateLimit: limit number of messages a consumer will consume
+- consumer-rate-limit: limit number of messages a consumer will consume
   per second. Defaults to 0.0f
-- producerCount: how many producers to run for the benchmark. Defaults
+- producer-count: how many producers to run for the benchmark. Defaults
   to 1
-- consumerCount: how many consumers to run for the benchmark. Defaults
+- consumer-count: how many consumers to run for the benchmark. Defaults
   to 1
-- producerTxSize: how many messages to send before committing the
+- producer-tx-size: how many messages to send before committing the
   transaction. Defaults to 0, i.e.: no transactions
-- consumerTxSize: how many messages to consume before committing the
+- consumer-tx-size: how many messages to consume before committing the
   transaction. Defaults to 0, i.e.: no transactions
 - confirm: whether to wait for publisher confirms during the
   benchmark. Defaults to -1. Any number >= 0 will make the benchmarks
   to use confirms.
-- autoAck: whether the benchmarks should auto-ack messages. Defaults
+- auto-ack: whether the benchmarks should auto-ack messages. Defaults
   to `false`.
-- multiAckEvery: whether to send a multi-ack every X seconds. Defaults
+- multi-ack-every: whether to send a multi-ack every X seconds. Defaults
   to `0`.
-- channelPrefetch: sets the per-channel prefetch. Defaults to `0`.
-- consumerPrefetch: sets the prefetch consumers. Defaults to `0`.
-- minMsgSize: the size in bytes of the messages to be
+- channel-prefetch: sets the per-channel prefetch. Defaults to `0`.
+- consumer-prefetch: sets the prefetch consumers. Defaults to `0`.
+- min-msg-size: the size in bytes of the messages to be
   published. Defaults to `0`.
-- timeLimit: for how long the benchmark should be run. Defaults to
+- time-limit: for how long the benchmark should be run. Defaults to
   `0`.
-- producerMsgCount: how many messages should the producers
+- producer-msg-count: how many messages should the producers
   publish. Defaults to `0`.
-- consumerMsgCount: how many messages should the consumer
+- consumer-msg-count: how many messages should the consumer
   consume. Defaults to `0`.
-- msgCount: single flag to set the previous two counts to the same
+- msg-count: single flag to set the previous two counts to the same
   value.
 - flags: flags to pass to the Producer, like `"mandatory"`,
   or `"persistent"`. Defaults to an empty list.
@@ -320,7 +320,6 @@ The following parameters can be specified for a scenario:
 - uri: the AMQP URI. See the [URI
   Spec](https://www.rabbitmq.com/uri-spec.html). Defaults to
   `"amqp://localhost"`.
-
 
 ## Note for Chrome Users ##
 
