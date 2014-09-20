@@ -75,7 +75,7 @@ class, then we can get a graph like the one below:
 ```html
 <div class="small-chart"
   data-type="time"
-  data-x-axis="time(s)"\
+  data-x-axis="time(s)"
   data-y-axis=""
   data-scenario="no-ack"></div>
 ```
