@@ -82,6 +82,18 @@ class, then we can get a graph like the one below:
 
 ![Small Chart Example](./images/small-chart.png)
 
+Finally, there's a type of graphs called `"summary"` that can show a summary of the whole benchmark. Here's the _HTML_ for displaying them:
+
+```html
+<div class="summary"
+  data-scenario="shard"></div>
+```
+
+And this is how they look like:
+
+![Summary Graph](./images/summary.png)
+
+
 ## Type of graphs ##
 
 We support several `types` of graphs, that you can specify using the
