@@ -1,6 +1,3 @@
-**Repository [moved to GitHub](https://github.com/rabbitmq/rabbitmq-perf-html)**.
-This is a stale read-only repository.
-
 # RabbitMQ Performance Tool #
 
 We have created a couple of tools to facilitate benchmarking RabbitMQ
