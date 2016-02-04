@@ -279,6 +279,14 @@ There are three kind of benchmark scenarios:
 
 As you can see `min-msg-size` will be converted to `minMsgSize`.
 
+You can set the AMQP URI. See the [URI Spec](https://www.rabbitmq.com/uri-spec.html).
+Default to `"amqp://localhost"` . For example:
+
+```javascript
+[{'name': 'consume', 'type': 'simple', 'uri': 'amqp://rabbitmq_uri',
+  'params': [{'time-limit': 30, 'producer-count': 4, 'consumer-count': 2}]}]
+```
+
 ### Supported scenario parameters ###
 
 The following parameters can be specified for a scenario:
@@ -329,9 +337,6 @@ The following parameters can be specified for a scenario:
   or `"persistent"`. Defaults to an empty list.
 - predeclared: tells the benchmark tool if the exchange/queue name
   provided already exist in the broker. Defaults to `false`.
-- uri: the AMQP URI. See the [URI
-  Spec](https://www.rabbitmq.com/uri-spec.html). Defaults to
-  `"amqp://localhost"`.
 
 ## Note for Chrome Users ##
 
