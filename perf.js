@@ -204,7 +204,7 @@ function log_ticks(axis) {
 }
 
 function attr_or_default(div, key, def) {
-    var res = div.attr(key);
+    var res = div.attr('data-' + key);
     return res == undefined ? def : res;
 }
 
