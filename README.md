@@ -80,7 +80,7 @@ class, then we can get a graph like the one below:
   data-scenario="no-ack"></div>
 ```
 
-![Small Chart Example](./images/small-chart.png)
+![Small Chart Example](./images/small_chart.png)
 
 Finally, there's a type of graphs called `"summary"` that can show a summary of the whole benchmark. Here's the _HTML_ for displaying them:
 
