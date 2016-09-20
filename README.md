@@ -1,14 +1,14 @@
 # RabbitMQ Performance Tool #
 
 We have created a couple of tools to facilitate benchmarking RabbitMQ
-in different usage scenarios.  One part of those tools are delivered
+in different usage scenarios.  One part of these tools is delivered
 together with our [RabbitMQ Java
 Client](http://www.rabbitmq.com/java-client.html), the other part is a
 couple of HTML/JS tools that will let you plot the results obtained
 from the benchmarks into nicely looking graphs. This repository
-contains the libraries for the later.
+contains the libraries for the latter.
 
-The following blog posts shows some examples of what can be done with
+The following blog posts show some examples of what can be done with
 this library:
 
 [RabbitMQ Performance Measurements, part
@@ -29,7 +29,7 @@ which is simply a JSON file like this one:
 [{'time-limit': 30, 'producer-count': 4, 'consumer-count': 2}]}]
 ```
 
-Place that code in a file called `publish-consume-spec.js` and then go
+Place this code in a file called `publish-consume-spec.js` and then go
 to the folder where you have the Java client and run the following
 command to start the benchmark:
 
@@ -38,18 +38,18 @@ command to start the benchmark:
 publish-consume-spec.js publish-consume-result.js
 ```
 
-That command will start one benchmark scenario where four producers
+This command will start a benchmark scenario where four producers
 will send messages to RabbitMQ over a period of thirty seconds. At the
 same time, two consumers will be consuming those messages.
 
 The results will be stored in the file `publish-consume-result.js`
-which we will use now to display a graph in our HTML page.
+which we will now use to display a graph in our HTML page.
 
 ## Displaying benchmark results ##
 
-Provided you have included our libraries (see bellow "Boilerplate
-HTML"), the following HTML snippet will display the graph for the
-benchmark that we just ran:
+Provided you have included our libraries (refer to the "Boilerplate
+HTML" section to know how to do that), the following HTML snippet will 
+display the graph for the benchmark that we just ran:
 
 ```html
 <div class="chart"
@@ -94,16 +94,16 @@ And this is how they look like:
 ![Summary Graph](./images/summary.png)
 
 
-## Type of graphs ##
+## Types of graphs ##
 
 We support several `types` of graphs, that you can specify using the
 `data-type` attribute:
 
-- `time`: this graph can plot several variables on the y-axis while on
-  the x-axis plots time. For example you could compare the send and
-  receive rate over a period of time.
+- `time`: this graph can plot several variables on the y-axis while
+  plotting the time on the x-axis. For example you could compare the 
+  send and receive rate over a period of time.
 
-On the previous section we show how to display this kind of graphs
+In the previous section we showed how to display these kind of graphs
 using HTML.
 
 - `series`: will plot how changing a variable affects the results of
@@ -124,14 +124,14 @@ Here's an HTML example of a `series` graph:
   data-series-key="minMsgSize"></div>
 ```
 
-- `x-y`: we can use this one to compare for example how message size
-  affects the message rate per second. This graph from the second
-  blogpost serves as an example.
+- `x-y`: we can use this one to compare, for example, how message size
+  affects the message rate per second. Refer to the second
+  blogpost for an example of this kind of graph.
 
 ![1 -> 1 sending rate message
  sizes](./images/1_1_sending_rates_msg_sizes.png)
 
-Here's how to represent in HTML a `x-y` graph:
+Here's how to represent an `x-y` graph in HTML:
 
 ```html
 <div class="chart"
@@ -162,11 +162,11 @@ Here how's to draw a `r-l` graph with HTML:
   data-scenario="rate-vs-latency"></div>
 ```
 
-To see how all these can be placed together take a look inside the
-examples to the files `various-spec.js` which puts together all the
-benchmark specifications mentioned above, then `various-result.js` has
-the result of the benchmark as run in the computer used to write this,
-and then `various.html` shows you how to display said results on an
+To see how all these benchmark specifications can be put together
+take a look at the `various-spec.js` file in the examples directory,
+The `various-result.js` file in the same directory contains
+the results of the benchmark process run on a particular computer
+and `various.html` shows you how to display the results in an
 HTML page.
 
 ## Supported HTML attributes ##
@@ -178,8 +178,8 @@ chart. Here's the list of the ones we support.
   benchmark results, for example
   `data-file="results-mini-2.7.1.js"`. This file will be loaded via
   AJAX. If you are loading the results on a local machine, you might
-  need to serve this file via HTTP, since some browsers will refuse
-  doing the AJAX call.
+  need to serve this file via HTTP, since certain browsers refuse
+  to perform the AJAX call otherwise.
 
 - `data-scenario`: A results file can contain several scenarios. This
   attribute specifies which one to display in the graph.
@@ -219,10 +219,10 @@ Files:
 <script language="javascript" type="text/javascript" src="../perf.js"></script>
 ```
 
-Our `perf.js` library depends _jQuery_ and _jQuery Flot_ library for
-drawing the graphs, and _excanvas_ in order to support older browsers.
+Our `perf.js` library depends on the  _jQuery_ and _jQuery Flot_ libraries for
+drawing graphs, and the _excanvas_ library for supporting older browsers.
 
-Once we loaded the libraries we can initialize our page with the
+Once we load the libraries we can initialize our page with the
 following Javascript:
 
 ```html
@@ -240,15 +240,15 @@ $(document).ready(function() {
 </script>
 ```
 
-There we load the file with the benchmark results and pass that to our
+We can then load the file with the benchmark results and pass that to our
 `render_graphs` function, which will take care of the rest, provided
-we have defined the various `div` where our graphs are going to be
+we have defined the various `div`s where our graphs are going to be
 drawn.
 
 ## Writing benchmark specifications ##
 
-Benchmarks specifications should be written in JSON format. We will
-have an array containing one or more benchmark scenarios to run. For
+Benchmarks specifications should be written in JSON format. We can
+define an array containing one or more benchmark scenarios to run. For
 example:
 
 ```javascript
@@ -260,12 +260,12 @@ example:
 ```
 
 This JSON object specifies two scenarios `'no-ack-long'` and
-`'headline-publish'`, of the type `simple` and they set some
-parameters for the benchmarks, like `producer-count`.
+`'headline-publish'`, of the type `simple` and sets
+parameters, like `producer-count`, for the benchmarks.
 
 There are three kind of benchmark scenarios:
 
-- `simple`: runs a basic benchmark based on the parameters on the spec
+- `simple`: runs a basic benchmark based on the parameters in the spec
   as seen in the example above.
 - `rate-vs-latency`: compares message rate with latency.
 - `varying`: can vary some variables during the benchmark, for example
@@ -277,9 +277,9 @@ There are three kind of benchmark scenarios:
  'min-msg-size', 'values': [0, 100, 200, 500, 1000, 2000, 5000]}]},
  ```
 
-As you can see `min-msg-size` will be converted to `minMsgSize`.
+ Note that `min-msg-size` gets converted to `minMsgSize`.
 
-You can set the AMQP URI. See the [URI Spec](https://www.rabbitmq.com/uri-spec.html).
+You can also set the AMQP URI. See the [URI Spec](https://www.rabbitmq.com/uri-spec.html).
 Default to `"amqp://localhost"` . For example:
 
 ```javascript
@@ -306,37 +306,34 @@ The following parameters can be specified for a scenario:
   per second. Defaults to `0.0f`
 - consumer-rate-limit: limit number of messages a consumer will consume
   per second. Defaults to 0.0f
-- producer-count: how many producers to run for the benchmark. Defaults
+- producer-count: number of producers to run for the benchmark. Defaults
   to 1
-- consumer-count: how many consumers to run for the benchmark. Defaults
+- consumer-count: number of consumers to run for the benchmark. Defaults
   to 1
-- producer-tx-size: how many messages to send before committing the
+- producer-tx-size: number of messages to send before committing the
   transaction. Defaults to 0, i.e.: no transactions
-- consumer-tx-size: how many messages to consume before committing the
+- consumer-tx-size: number of messages to consume before committing the
   transaction. Defaults to 0, i.e.: no transactions
-- confirm: whether to wait for publisher confirms during the
+- confirm: specifies whether to wait for publisher confirms during the
   benchmark. Defaults to -1. Any number >= 0 will make the benchmarks
   to use confirms.
-- auto-ack: whether the benchmarks should auto-ack messages. Defaults
+- auto-ack: specifies whether the benchmarks should auto-ack messages. Defaults
   to `false`.
-- multi-ack-every: whether to send a multi-ack every X seconds. Defaults
+- multi-ack-every: specifies whether to send a multi-ack every X seconds. Defaults
   to `0`.
 - channel-prefetch: sets the per-channel prefetch. Defaults to `0`.
 - consumer-prefetch: sets the prefetch consumers. Defaults to `0`.
 - min-msg-size: the size in bytes of the messages to be
   published. Defaults to `0`.
-- time-limit: for how long the benchmark should be run. Defaults to
-  `0`.
-- producer-msg-count: how many messages should the producers
-  publish. Defaults to `0`.
-- consumer-msg-count: how many messages should the consumer
-  consume. Defaults to `0`.
-- msg-count: single flag to set the previous two counts to the same
-  value.
-- flags: flags to pass to the Producer, like `"mandatory"`,
+- time-limit: specifies how long the benchmark should be run. Defaults to`0`.
+- producer-msg-count: number of messages to be published by the producers.
+   Defaults to `0`.
+- consumer-msg-count: number of messages to be consumed by the consumer. Defaults to `0`.
+- msg-count: single flag to set the previous two counts to the same value.
+- flags: flags to pass to the producer, like `"mandatory"`,
   or `"persistent"`. Defaults to an empty list.
 - predeclared: tells the benchmark tool if the exchange/queue name
-  provided already exist in the broker. Defaults to `false`.
+  provided already exists in the broker. Defaults to `false`.
 
 ## Note for Chrome Users ##
 
