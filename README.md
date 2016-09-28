@@ -1,3 +1,7 @@
+# Deprecated Repository #
+
+The RabbitMQ Performance Tool is now hosted at the [Performance Test repository](https://github.com/rabbitmq/rabbitmq-perf-test).
+
 # RabbitMQ Performance Tool #
 
 We have created a couple of tools to facilitate benchmarking RabbitMQ
