@@ -1,8 +1,10 @@
-# Deprecated Repository #
+# Deprecated Repository
 
-The RabbitMQ Performance Tool is now hosted at the [Performance Test repository](https://github.com/rabbitmq/rabbitmq-perf-test).
+**Important**: this repository is no longer getting any updates.
 
-# RabbitMQ Performance Tool #
+This repository is now part of the [PerfTest project](https://github.com/rabbitmq/rabbitmq-perf-test).
+
+## PerfTool Stats in HTML
 
 We have created a couple of tools to facilitate benchmarking RabbitMQ
 in different usage scenarios.  One part of these tools is delivered
@@ -20,7 +22,7 @@ this library:
 [RabbitMQ Performance Measurements, part
 2](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/).
 
-## Running benchmarks ##
+## Running benchmarks
 
 Let's see how to run some benchmarks and then display the results in
 HTML using this tool.
