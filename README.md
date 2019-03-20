@@ -9,7 +9,7 @@ This repository is now part of the [PerfTest project](https://github.com/rabbitm
 We have created a couple of tools to facilitate benchmarking RabbitMQ
 in different usage scenarios.  One part of these tools is delivered
 together with our [RabbitMQ Java
-Client](http://www.rabbitmq.com/java-client.html), the other part is a
+Client](https://www.rabbitmq.com/java-client.html), the other part is a
 couple of HTML/JS tools that will let you plot the results obtained
 from the benchmarks into nicely looking graphs. This repository
 contains the libraries for the latter.
@@ -18,9 +18,9 @@ The following blog posts show some examples of what can be done with
 this library:
 
 [RabbitMQ Performance Measurements, part
-1](http://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/).
+1](https://www.rabbitmq.com/blog/2012/04/17/rabbitmq-performance-measurements-part-1/).
 [RabbitMQ Performance Measurements, part
-2](http://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/).
+2](https://www.rabbitmq.com/blog/2012/04/25/rabbitmq-performance-measurements-part-2/).
 
 ## Running benchmarks
 
